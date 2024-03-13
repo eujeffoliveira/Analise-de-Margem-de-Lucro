@@ -361,3 +361,13 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Adições sugeridas pelo ChatGPT
+
+*.deploymentManifest
+*.dtsxproj.user
+*.dtsConfig
+*.dtproj.user
+*.dtproj.vspscc
+*.rdl.data
+*.bim_*.settings
