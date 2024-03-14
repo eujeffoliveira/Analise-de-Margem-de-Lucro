@@ -48,67 +48,133 @@ Foi criada uma tarefa para remover os valores nulos das tabelas.<br>
 
 A tabela FactSales geralmente contém informações sobre as vendas realizadas. Aqui estão algumas das variáveis comuns encontradas nesta tabela:
 
-| Variável       | Descrição                                            |
-|----------------|------------------------------------------------------|
-| SalesID        | Identificador único da venda                         |
-| ProductID      | Identificador único do produto vendido               |
-| CustomerID     | Identificador único do cliente que realizou a compra |
-| StoreID        | Identificador único da loja onde a venda ocorreu     |
-| SalesAmount    | Valor total da venda                                 |
-| Quantity       | Quantidade de produtos vendidos                      |
-| DiscountAmount | Valor do desconto aplicado na venda                  |
-| SalesDateKey   | Chave estrangeira para a tabela DimDate              |
+| Variável       | Variável Traduzida | Tipo de Dados | Descrição                                         |
+|----------------|---------------------|---------------|---------------------------------------------------|
+| SalesKey       | VendaID             | int           | Chave única para cada venda                       |
+| DateKey        | DataID              | datetime      | Chave para a data da venda                        |
+| ChannelKey     | CanalID             | int           | Chave para o canal de vendas                      |
+| StoreKey       | LojaID              | int           | Chave para a loja onde a venda ocorreu            |
+| ProductKey     | ProdutoID           | int           | Chave para o produto vendido                      |
+| PromotionKey   | PromocaoID          | int           | Chave para a promoção aplicada na venda           |
+| CurrencyKey    | MoedaID             | int           | Chave para a moeda utilizada na transação         |
+| UnitCost       | Custo_Unitario      | money         | Custo unitário do produto vendido                 |
+| UnitPrice      | Preco_Unitario      | money         | Preço unitário do produto vendido                 |
+| SalesQuantity  | QuantidadeVendas    | int           | Quantidade de produtos vendidos                   |
+| ReturnQuantity | QuantidadeDevolucao | int           | Quantidade de produtos devolvidos                 |
+| ReturnAmount   | MontanteDevolvido   | money         | Montante de dinheiro devolvido                    |
+| DiscountQuantity | QuantidadeDesconto | int         | Quantidade de produtos com desconto                |
+| DiscountAmount | MontanteDesconto    | money         | Montante total de desconto aplicado               |
+| TotalCost      | CustoTotal          | money         | Custo total da venda (considerando devoluções)    |
+| SalesAmount    | MontanteVendas      | money         | Montante total da venda                           |
+| ETLLoadID      | ETLLoadID      | int           | Identificador do processo de carga do ETL         |
+| LoadDate       | DataCarregamento    | datetime      | Data de carga dos dados                           |
+| UpdateDate     | DataAtualizacao     | datetime      | Data de atualização dos dados                     |
+
 
 
 ## Tabela DimProduct:
 
 A tabela DimProduct contém detalhes sobre os produtos vendidos. Aqui estão algumas das variáveis comuns encontradas nesta tabela:
 
-| Variável        | Descrição                                        |
-|-----------------|--------------------------------------------------|
-| ProductID       | Identificador único do produto                   |
-| ProductName     | Nome do produto                                  |
-| Category        | Categoria do produto                             |
-| Subcategory     | Subcategoria do produto                          |
-| Manufacturer    | Fabricante do produto                            |
-| ListPrice       | Preço de lista do produto                        |
-| StandardCost    | Custo padrão de produção do produto             |
-| SellStartDate   | Data de início das vendas do produto             |
-| SellEndDate     | Data de término das vendas do produto (se houver)|
-| DiscontinuedDate| Data em que o produto foi descontinuado (se houver)|
-| ProductDescription | Descrição do produto                           |
-
+|    Variável         | Variável Traduzida    | Tipo de Dados | Descrição                                         |
+|---------------------|-----------------------|---------------|---------------------------------------------------|
+| ProductKey          | ProdutoID          | int           | Chave única para cada produto                    |
+| ProductLabel        | RotuloProduto         | nvarchar      | Rótulo do produto                                |
+| ProductName         | NomeProduto           | nvarchar      | Nome do produto                                  |
+| ProductDescription  | DescricaoProduto      | nvarchar      | Descrição do produto                             |
+| ProductSubcategoryKey | SubcategoriaID  | int           | Chave para a subcategoria do produto             |
+| Manufacturer        | Fabricante            | nvarchar      | Fabricante do produto                            |
+| BrandName           | NomeMarca             | nvarchar      | Nome da marca do produto                         |
+| ClassID             | ClasseID              | nvarchar      | ID da classe do produto                          |
+| ClassName           | NomeClasse            | nvarchar      | Nome da classe do produto                        |
+| StyleID             | EstiloID              | nvarchar      | ID do estilo do produto                          |
+| StyleName           | NomeEstilo            | nvarchar      | Nome do estilo do produto                        |
+| ColorID             | CorID                 | nvarchar      | ID da cor do produto                             |
+| ColorName           | NomeCor               | nvarchar      | Nome da cor do produto                           |
+| Size                | Tamanho               | nvarchar      | Tamanho do produto                               |
+| SizeRange           | FaixaTamanho          | nvarchar      | Faixa de tamanho do produto                      |
+| SizeUnitMeasureID   | MedidaTamanhoID       | nvarchar      | ID da unidade de medida de tamanho do produto    |
+| Weight              | Peso                  | float         | Peso do produto                                  |
+| WeightUnitMeasureID | MedidaPesoID          | nvarchar      | ID da unidade de medida de peso do produto       |
+| UnitOfMeasureID     | UnidadeMedidaID       | nvarchar      | ID da unidade de medida do produto               |
+| UnitOfMeasureName   | NomeUnidadeMedida     | nvarchar      | Nome da unidade de medida do produto             |
+| StockTypeID         | TipoEstoqueID         | nvarchar      | ID do tipo de estoque do produto                 |
+| StockTypeName       | NomeTipoEstoque       | nvarchar      | Nome do tipo de estoque do produto               |
+| UnitCost            | CustoUnitario         | money         | Custo unitário do produto                        |
+| UnitPrice           | PrecoUnitario         | money         | Preço unitário do produto                        |
+| AvailableForSaleDate| DataDisponivelVenda   | datetime      | Data disponível para venda do produto            |
+| StopSaleDate        | DataFimVenda          | datetime      | Data de término de venda do produto              |
+| Status              | Status                | nvarchar      | Status do produto                                |
+| ImageURL            | URLImagem             | nvarchar      | URL da imagem do produto                         |
+| ProductURL          | URLProduto            | nvarchar      | URL do produto                                   |
+| ETLLoadID           | IDCarregamento        | int           | Identificador do processo de carga do ETL        |
+| LoadDate            | DataCarregamento      | datetime      | Data de carga dos dados                          |
+| UpdateDate          | DataAtualizacao       | datetime      | Data de atualização dos dados                    |
 
 ## Tabela DimDate:
 
 A tabela DimDate contém informações sobre datas. Aqui estão algumas das variáveis comuns encontradas nesta tabela:
 
-| Variável        | Descrição                                        |
-|-----------------|--------------------------------------------------|
-| DateKey         | Chave primária que representa a data             |
-| FullDate        | Data completa (ano-mês-dia)                      |
-| DayOfWeek       | Dia da semana (1-7, onde 1 é domingo)            |
-| DayOfMonth      | Dia do mês                                       |
-| Month           | Mês                                             |
-| Quarter         | Trimestre                                       |
-| Year            | Ano                                              |
-| HolidayFlag     | Indicador se a data é um feriado (1 para sim, 0 para não)|
-| FiscalQuarter   | Trimestre fiscal                                 |
-| FiscalYear      | Ano fiscal                                       |
-
+| Variável             | Variável Traduzida  | Tipo de Dados | Descrição                                           |
+|----------------------|---------------------|---------------|-----------------------------------------------------|
+| DateKey              | DataID              | datetime      | Chave para a data                                   |
+| FullDateLabel        | RotuloDataCompleta  | nvarchar      | Rótulo da data completa                             |
+| DateDescription      | DescricaoData       | nvarchar      | Descrição da data                                   |
+| CalendarYear         | AnoCalendario       | int           | Ano do calendário                                   |
+| CalendarYearLabel    | RotuloAnoCalendario | nvarchar      | Rótulo do ano do calendário                         |
+| CalendarHalfYear     | SemestreCalendario  | int           | Semestre do calendário                              |
+| CalendarHalfYearLabel| RotuloSemestreCalendario | nvarchar | Rótulo do semestre do calendário                    |
+| CalendarQuarter      | TrimestreCalendario | int           | Trimestre do calendário                             |
+| CalendarQuarterLabel | RotuloTrimestreCalendario | nvarchar | Rótulo do trimestre do calendário                   |
+| CalendarMonth        | MesCalendario       | int           | Mês do calendário                                   |
+| CalendarMonthLabel   | RotuloMesCalendario | nvarchar      | Rótulo do mês do calendário                         |
+| CalendarWeek         | SemanaCalendario    | int           | Semana do calendário                                |
+| CalendarWeekLabel    | RotuloSemanaCalendario | nvarchar   | Rótulo da semana do calendário                      |
+| CalendarDayOfWeek    | DiaSemanaCalendario | int           | Dia da semana do calendário                         |
+| CalendarDayOfWeekLabel | RotuloDiaSemanaCalendario | nvarchar | Rótulo do dia da semana do calendário               |
+| FiscalYear           | AnoFiscal           | int           | Ano fiscal                                          |
+| FiscalYearLabel      | RotuloAnoFiscal     | nvarchar      | Rótulo do ano fiscal                                |
+| FiscalHalfYear       | SemestreFiscal      | int           | Semestre fiscal                                     |
+| FiscalHalfYearLabel  | RotuloSemestreFiscal| nvarchar     | Rótulo do semestre fiscal                           |
+| FiscalQuarter        | TrimestreFiscal     | int           | Trimestre fiscal                                    |
+| FiscalQuarterLabel   | RotuloTrimestreFiscal | nvarchar   | Rótulo do trimestre fiscal                          |
+| FiscalMonth          | MesFiscal           | int           | Mês fiscal                                          |
+| FiscalMonthLabel     | RotuloMesFiscal     | nvarchar      | Rótulo do mês fiscal                                |
+| IsWorkDay            | EDiaUtil            | nvarchar      | Indica se é um dia útil ou não                     |
+| IsHoliday            | Eferiado            | int           | Indica se é um feriado (1 para sim, 0 para não)    |
+| HolidayName          | NomeFeriado         | nvarchar      | Nome do feriado                                     |
+| EuropeSeason         | EstacaoEuropa       | nvarchar      | Estação do ano na Europa                            |
+| NorthAmericaSeason   | EstacaoAmericaNorte | nvarchar     | Estação do ano na América do Norte                  |
+| AsiaSeason           | EstacaoAsia         | nvarchar      | Estação do ano na Ásia                              |
 
 ## Tabela DimStore:
 
 A tabela DimStore contém informações sobre as lojas onde as vendas ocorrem. Aqui estão algumas das variáveis comuns encontradas nesta tabela:
 
-| Variável       | Descrição                                            |
-|----------------|------------------------------------------------------|
-| StoreID        | Identificador único da loja                          |
-| StoreName      | Nome da loja                                         |
-| StoreType      | Tipo de loja (por exemplo, varejo, online, etc.)     |
-| StoreManager   | Nome do gerente da loja                              |
-| Address        | Endereço da loja                                     |
-| City           | Cidade onde a loja está localizada                   |
-| StateProvince  | Estado ou província onde a loja está localizada      |
-| CountryRegion  | País ou região onde a loja está localizada           |
-| PostalCode     | Código postal da loja                                |
+| Variável           | Variável Traduzida  | Tipo de Dados | Descrição                                           |
+|--------------------|---------------------|---------------|-----------------------------------------------------|
+| StoreKey           | LojaID              | int           | Chave única para cada loja                          |
+| GeographyKey       | ChaveGeografia      | int           | Chave para a geografia da loja                      |
+| StoreManager       | GerenteLoja         | int           | Gerente da loja                                     |
+| StoreType          | TipoLoja            | nvarchar      | Tipo da loja                                        |
+| StoreName          | NomeLoja            | nvarchar      | Nome da loja                                        |
+| StoreDescription   | DescricaoLoja       | nvarchar      | Descrição da loja                                   |
+| Status             | Status              | nvarchar      | Status da loja                                      |
+| OpenDate           | DataAbertura        | datetime      | Data de abertura da loja                            |
+| CloseDate          | DataFechamento      | datetime      | Data de fechamento da loja                          |
+| EntityKey          | ChaveEntidade       | int           | Chave da entidade da loja                           |
+| ZipCode            | CEP                 | nvarchar      | CEP da loja                                         |
+| ZipCodeExtension   | ComplementoCEP      | nvarchar      | Complemento do CEP da loja                          |
+| StorePhone         | TelefoneLoja        | nvarchar      | Número de telefone da loja                          |
+| StoreFax           | FaxLoja             | nvarchar      | Número de fax da loja                               |
+| AddressLine1       | EnderecoLinha1      | nvarchar      | Linha de endereço 1 da loja                         |
+| AddressLine2       | EnderecoLinha2      | nvarchar      | Linha de endereço 2 da loja                         |
+| CloseReason        | MotivoFechamento    | nvarchar      | Motivo do fechamento da loja                        |
+| EmployeeCount      | QuantidadeFuncionarios | int        | Contagem de funcionários da loja                    |
+| SellingAreaSize    | TamanhoAreaVendas   | float         | Tamanho da área de vendas da loja                   |
+| LastRemodelDate    | DataUltimaRemodelacao | datetime  | Data da última remodelação da loja                  |
+| GeoLocation        | LocalizacaoGeografica | geography | Localização geográfica da loja                      |
+| Geometry           | Geometria           | geometry      | Geometria da loja                                   |
+| ETLLoadID          | CarregamentoID      | int           | Identificador do processo de carga do ETL           |
+| LoadDate           | DataCarregamento    | datetime      | Data de carga dos dados                             |
+| UpdateDate         | DataAtualizacao     | datetime      | Data de atualização dos dados                       |
