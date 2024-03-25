@@ -26,11 +26,12 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">TARS</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAKz9D0aC6uUSp8tsZJnV7yAAAAAACAAAAAAAQZgAAAAEAACAAAACoNpRK1WEFMWst7IuacgW2oruzqfMZX3oVcGGigiz/FQAAAAAOgAAAAAIAACAAAAC2XamiCKpMbfLbsCwUD2olkDEsDbWGZq6W4M50whY4l5AAAACfj/J4nJ+SgIsgHQ9QfHKc8QJdxoOmzPwVPnkmsruBWNujDONyWc9AgImfw7/tf+xO/TBO5aADAAPTSP3pI71w7mckNOxysjXg2jeEZqvuyUZf9wuHA1IlFEGjgCJX+oSsMqYk3/jLwAD91Q+bsAfk7ky8/uWsRQnixt8qfd56MnvuUpxwVsTIrkK8/FDzUvhAAAAA2vswSYtBRbAvM4vdu7ykAcheW75jtwIcHbVvuGX0kLwvOvouJbVtaDJB8w2fOm4B44P6Er7VLKFTo/YXnH1GEw==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAKz9D0aC6uUSp8tsZJnV7yAAAAAACAAAAAAAQZgAAAAEAACAAAAAt4ZQ/vwha1JgtPERZankvwKojFsPPgNIv32Nsw+ZWUQAAAAAOgAAAAAIAACAAAAChcT1OKqNt12ifq4372eoi7+qfToRgtZmAoNF4CZGSNZAAAAAjIZa5Jm3FveEj0h3XIihi/LIdIWIQVe6/EXWoBOtl1jBogIG/ClplO1wbYJMiJDdPGZM+9MxpBzxHZN0R7uUXmyvyFdSKT6MxXq5HOAW0nYA7rxk5U8Y59eiTMn8Iw7JuPJeu4wMVgtk8stWmqA25tnTpCjgLBNK0QSZhHoKII/mWkaLNXABpiK+Tc4fO6HNAAAAA+QObuabIWGaC8/iGRkTG4vtBVCHOFQhaE9uw3DGC/G4TjPmfDvlUWe5R9ePxeSKWTIsTzxJ7cOU7gRXd+HSqMw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="EXTRACAO.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="TRANSFORMACAO.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers />
         <SSIS:DeploymentInfo>
@@ -201,6 +202,23 @@
                   </SSIS:Properties>
                 </SSIS:Parameter>
               </SSIS:Parameters>
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="TRANSFORMACAO.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{5641D2ED-D269-4E30-9369-21FCAD2E87A9}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">TRANSFORMACAO</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{76C396B1-F3B3-49E4-8AF2-A11B510BA2E2}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
             </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>
