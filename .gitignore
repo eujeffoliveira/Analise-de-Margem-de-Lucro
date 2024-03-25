@@ -371,3 +371,7 @@ FodyWeavers.xsd
 *.dtproj.vspscc
 *.rdl.data
 *.bim_*.settings
+/Cache/EXTRACAO/DimDateRaw
+/Cache/EXTRACAO/DimProductRaw
+/Cache/EXTRACAO/DimStoreRaw
+/Cache/EXTRACAO/FactSalesRaw
