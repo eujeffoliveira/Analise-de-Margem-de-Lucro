@@ -23,7 +23,9 @@ O pacote foi criado com os seguintes passos:<br>
 
 1. **Conexão com o Banco de Dados de Origem:** Foi criada uma conexão com o banco de dados de origem (**ContosoRetailDW**).<br>
 1. **Tarefa de Execução de Consulta SQL:** Foi criada uma tarefa para executar uma consulta SQL que realiza a extração dos dados das tabelas **FactSales**, **DimProduct**, **DimDate** e **DimStore**.<br>
-1. **Criação de arquivo RAW:** Foi criado um arquivo RAW para armazenar os dados extraídos das tabelas e que serão utilizados na fase de transformação.<br>
+1. **Criação de arquivo RAW:** Foi criado um arquivo RAW para armazenar os dados extraídos das tabelas e que serão utilizados na fase de transformação¹.<br>
+
+**¹** Foi necessário criar uma pré transformação dos dados da tabela **DimStore** tendo em vista que as váriaveis 'GeoLocation' e 'Geometry' estavam em um formato que não era compatível com o tipo de arquvo RAW.<br>
 
 #### 2. Pacote de Transformação
 
@@ -66,7 +68,7 @@ A tabela FactSales geralmente contém informações sobre as vendas realizadas. 
 | DiscountAmount | MontanteDesconto    | money         | Montante total de desconto aplicado               |
 | TotalCost      | CustoTotal          | money         | Custo total da venda (considerando devoluções)    |
 | SalesAmount    | MontanteVendas      | money         | Montante total da venda                           |
-| ETLLoadID      | ETLLoadID      | int           | Identificador do processo de carga do ETL         |
+| ETLLoadID      | CargaETLID      | int           | Identificador do processo de carga do ETL         |
 | LoadDate       | DataCarregamento    | datetime      | Data de carga dos dados                           |
 | UpdateDate     | DataAtualizacao     | datetime      | Data de atualização dos dados                     |
 
@@ -82,7 +84,7 @@ A tabela DimProduct contém detalhes sobre os produtos vendidos. Aqui estão alg
 | ProductLabel        | RotuloProduto         | nvarchar      | Rótulo do produto                                |
 | ProductName         | NomeProduto           | nvarchar      | Nome do produto                                  |
 | ProductDescription  | DescricaoProduto      | nvarchar      | Descrição do produto                             |
-| ProductSubcategoryKey | SubcategoriaID  | int           | Chave para a subcategoria do produto             |
+| ProductSubcategoryKey | SubcategoriaDoProdutoID  | int           | Chave para a subcategoria do produto             |
 | Manufacturer        | Fabricante            | nvarchar      | Fabricante do produto                            |
 | BrandName           | NomeMarca             | nvarchar      | Nome da marca do produto                         |
 | ClassID             | ClasseID              | nvarchar      | ID da classe do produto                          |
@@ -93,9 +95,9 @@ A tabela DimProduct contém detalhes sobre os produtos vendidos. Aqui estão alg
 | ColorName           | NomeCor               | nvarchar      | Nome da cor do produto                           |
 | Size                | Tamanho               | nvarchar      | Tamanho do produto                               |
 | SizeRange           | FaixaTamanho          | nvarchar      | Faixa de tamanho do produto                      |
-| SizeUnitMeasureID   | MedidaTamanhoID       | nvarchar      | ID da unidade de medida de tamanho do produto    |
+| SizeUnitMeasureID   | UnidadeDeMedidaTamanhoID       | nvarchar      | ID da unidade de medida de tamanho do produto    |
 | Weight              | Peso                  | float         | Peso do produto                                  |
-| WeightUnitMeasureID | MedidaPesoID          | nvarchar      | ID da unidade de medida de peso do produto       |
+| WeightUnitMeasureID | UnidadeDeMedidaPesoID          | nvarchar      | ID da unidade de medida de peso do produto       |
 | UnitOfMeasureID     | UnidadeMedidaID       | nvarchar      | ID da unidade de medida do produto               |
 | UnitOfMeasureName   | NomeUnidadeMedida     | nvarchar      | Nome da unidade de medida do produto             |
 | StockTypeID         | TipoEstoqueID         | nvarchar      | ID do tipo de estoque do produto                 |
@@ -107,7 +109,7 @@ A tabela DimProduct contém detalhes sobre os produtos vendidos. Aqui estão alg
 | Status              | Status                | nvarchar      | Status do produto                                |
 | ImageURL            | URLImagem             | nvarchar      | URL da imagem do produto                         |
 | ProductURL          | URLProduto            | nvarchar      | URL do produto                                   |
-| ETLLoadID           | IDCarregamento        | int           | Identificador do processo de carga do ETL        |
+| ETLLoadID           | CargaETLID        | int           | Identificador do processo de carga do ETL        |
 | LoadDate            | DataCarregamento      | datetime      | Data de carga dos dados                          |
 | UpdateDate          | DataAtualizacao       | datetime      | Data de atualização dos dados                    |
 
@@ -154,7 +156,7 @@ A tabela DimStore contém informações sobre as lojas onde as vendas ocorrem. A
 | Variável           | Variável Traduzida  | Tipo de Dados | Descrição                                           |
 |--------------------|---------------------|---------------|-----------------------------------------------------|
 | StoreKey           | LojaID              | int           | Chave única para cada loja                          |
-| GeographyKey       | ChaveGeografia      | int           | Chave para a geografia da loja                      |
+| GeographyKey       | ChaveGeografica      | int           | Chave para a geografia da loja                      |
 | StoreManager       | GerenteLoja         | int           | Gerente da loja                                     |
 | StoreType          | TipoLoja            | nvarchar      | Tipo da loja                                        |
 | StoreName          | NomeLoja            | nvarchar      | Nome da loja                                        |
@@ -163,8 +165,8 @@ A tabela DimStore contém informações sobre as lojas onde as vendas ocorrem. A
 | OpenDate           | DataAbertura        | datetime      | Data de abertura da loja                            |
 | CloseDate          | DataFechamento      | datetime      | Data de fechamento da loja                          |
 | EntityKey          | ChaveEntidade       | int           | Chave da entidade da loja                           |
-| ZipCode            | CEP                 | nvarchar      | CEP da loja                                         |
-| ZipCodeExtension   | ComplementoCEP      | nvarchar      | Complemento do CEP da loja                          |
+| ZipCode            | CodigoPostal                 | nvarchar      | CEP da loja                                         |
+| ZipCodeExtension   | ComplementoCodigoPostal      | nvarchar      | Complemento do CEP da loja                          |
 | StorePhone         | TelefoneLoja        | nvarchar      | Número de telefone da loja                          |
 | StoreFax           | FaxLoja             | nvarchar      | Número de fax da loja                               |
 | AddressLine1       | EnderecoLinha1      | nvarchar      | Linha de endereço 1 da loja                         |
@@ -173,8 +175,8 @@ A tabela DimStore contém informações sobre as lojas onde as vendas ocorrem. A
 | EmployeeCount      | QuantidadeFuncionarios | int        | Contagem de funcionários da loja                    |
 | SellingAreaSize    | TamanhoAreaVendas   | float         | Tamanho da área de vendas da loja                   |
 | LastRemodelDate    | DataUltimaRemodelacao | datetime  | Data da última remodelação da loja                  |
-| GeoLocation        | LocalizacaoGeografica | geography | Localização geográfica da loja                      |
+| GeoLocation        | GeoLocalizacao | geography | Localização geográfica da loja                      |
 | Geometry           | Geometria           | geometry      | Geometria da loja                                   |
-| ETLLoadID          | CarregamentoID      | int           | Identificador do processo de carga do ETL           |
+| ETLLoadID          | CargaETLID      | int           | Identificador do processo de carga do ETL           |
 | LoadDate           | DataCarregamento    | datetime      | Data de carga dos dados                             |
 | UpdateDate         | DataAtualizacao     | datetime      | Data de atualização dos dados                       |
