@@ -1,4 +1,6 @@
-# Projeto SSIS e Power BI de Análise de Margem de Lucro
+# Projeto SSIS e Power BI de Análise de Margem de Lucro 
+( **projeto em desenvolvimento** )
+
 **Autor:** José Jefferson Santos de Oliveira<br>
 **Softwares Utilizados:** SQL Server 2019, Visual Studio 2022 e SQL Server Management Studio 19<br>
 **Banco de Dados de Exemplo:** ContosoRetailDW e ANALISE-LUCROS<br>
@@ -40,17 +42,13 @@ Foi criada uma tarefa para traduzir o nome das colunas das tabelas.<br>
 
 Foi criada uma tarefa para remover os valores nulos das tabelas.<br>
 
-
-
-
-
-
+> **...**
 
 ## Tabela FactSales:
 
-A tabela FactSales geralmente contém informações sobre as vendas realizadas. Aqui estão algumas das variáveis comuns encontradas nesta tabela:
+A tabela FactSales contém informações sobre as vendas realizadas. Abaixo estão algumas das variáveis comuns encontradas nesta tabela:
 
-| Variável       | Variável Traduzida | Tipo de Dados | Descrição                                         |
+| Variável       | Variável Traduzida | Tipo de Dados | Descrição                                          |
 |----------------|---------------------|---------------|---------------------------------------------------|
 | SalesKey       | VendaID             | int           | Chave única para cada venda                       |
 | DateKey        | DataID              | datetime      | Chave para a data da venda                        |
@@ -72,11 +70,9 @@ A tabela FactSales geralmente contém informações sobre as vendas realizadas. 
 | LoadDate       | DataCarregamento    | datetime      | Data de carga dos dados                           |
 | UpdateDate     | DataAtualizacao     | datetime      | Data de atualização dos dados                     |
 
-
-
 ## Tabela DimProduct:
 
-A tabela DimProduct contém detalhes sobre os produtos vendidos. Aqui estão algumas das variáveis comuns encontradas nesta tabela:
+A tabela DimProduct contém detalhes sobre os produtos vendidos. Abaixo estão algumas das variáveis comuns encontradas nesta tabela:
 
 |    Variável         | Variável Traduzida    | Tipo de Dados | Descrição                                         |
 |---------------------|-----------------------|---------------|---------------------------------------------------|
@@ -115,7 +111,7 @@ A tabela DimProduct contém detalhes sobre os produtos vendidos. Aqui estão alg
 
 ## Tabela DimDate:
 
-A tabela DimDate contém informações sobre datas. Aqui estão algumas das variáveis comuns encontradas nesta tabela:
+A tabela DimDate contém informações sobre datas. abaixo estão algumas das variáveis comuns encontradas nesta tabela:
 
 | Variável             | Variável Traduzida  | Tipo de Dados | Descrição                                           |
 |----------------------|---------------------|---------------|-----------------------------------------------------|
@@ -151,7 +147,7 @@ A tabela DimDate contém informações sobre datas. Aqui estão algumas das vari
 
 ## Tabela DimStore:
 
-A tabela DimStore contém informações sobre as lojas onde as vendas ocorrem. Aqui estão algumas das variáveis comuns encontradas nesta tabela:
+A tabela DimStore contém informações sobre as lojas onde as vendas ocorrem. Abaixo estão algumas das variáveis comuns encontradas nesta tabela:
 
 | Variável           | Variável Traduzida  | Tipo de Dados | Descrição                                           |
 |--------------------|---------------------|---------------|-----------------------------------------------------|
